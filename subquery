@@ -1,0 +1,24 @@
+CREATE TABLE employees (
+    employee_id INT PRIMARY KEY,
+    name VARCHAR(50),
+    salary INT
+);
+INSERT INTO employees VALUES
+(1, 'Rahul', 55000),
+(2, 'Priya', 48000),
+(3, 'Arjun', 65000),
+(4, 'Sneha', 60000),
+(5, 'Kiran', 45000);
+SELECT name, salary
+FROM employees
+WHERE salary > (
+    SELECT AVG(salary)
+    FROM employees
+);
+
+OUTPUT:
+name  | salary
+------|-------
+Rahul | 55000
+Arjun | 65000
+Sneha | 60000
